@@ -18,7 +18,7 @@ import { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer
 import { ready as resampleReady, resample as resampleWASM } from 'keyframe-resample'
 import { BufferUtils } from '@gltf-transform/core';
 // import draco3d from 'draco3dgltf'
-import * as Jimp from 'jimp';
+import Jimp from 'jimp';
 
 async function transformWeb(file, output, config = {}) {
   await MeshoptDecoder.ready
