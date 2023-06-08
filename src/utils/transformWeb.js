@@ -18,7 +18,7 @@ import { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer
 import { ready as resampleReady, resample as resampleWASM } from 'keyframe-resample'
 import { BufferUtils } from '@gltf-transform/core';
 // import draco3d from 'draco3dgltf'
-import Jimp from 'jimp';
+// import Jimp from 'jimp';
 
 async function transformWeb(file, output, config = {}) {
   await MeshoptDecoder.ready
@@ -52,7 +52,7 @@ async function transformWeb(file, output, config = {}) {
   functions.push(
     resample({ ready: resampleReady, resample: resampleWASM }),
     prune({ keepAttributes: false, keepLeaves: false }),
-    customResize({size: [resolution, resolution], quality: outputQuality}),
+    // customResize({size: [resolution, resolution], quality: outputQuality}),
     sparse()
   )
 
@@ -65,10 +65,10 @@ async function transformWeb(file, output, config = {}) {
   await io.write(output, document)
 }
 
+/*
 function customResize({ size, quality }) {
   return async (document) => {
     for (const texture of document.getRoot().listTextures()) {
-      //if (/* ??? */) continue;
 
       const buffer = await Jimp.read(texture.getImage())
         .resize(size[0], size[1], { upscale: false })
@@ -80,5 +80,6 @@ function customResize({ size, quality }) {
     }
   };
 }
+*/
 
 export default transformWeb
